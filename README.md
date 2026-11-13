@@ -1,69 +1,208 @@
-# CampusCare - Smart Campus Maintenance Management System
+# CampusCare – Smart Campus Maintenance, Technician Allocation & SLA Management System
 
-CampusCare is a role-based campus maintenance portal built as a DBMS mini-project. MySQL 8 is the source of truth for users, campus locations, assets, requests, approvals, technician assignments, SLAs, inventory, audit history, and feedback. MongoDB is an optional mirror for operational event records.
+A Database Management Systems (DBMS) Mini Project developed as part of the B.Tech Computer Science and Engineering curriculum at PES University.
 
-## Features
+---
 
-- Student and faculty registration, secure login, database-backed sessions, and role-specific navigation.
-- Students create categorized requests with campus location, asset, severity, priority, and description; they can track status and rate resolved service.
-- Faculty and staff review requests, approve or reject with remarks, and create their own service requests.
-- Administrators assign or reassign available technicians, manage users and campus locations, and review assets, inventory, preventive maintenance, vendors, reports, and audit history.
-- Technicians view assigned jobs, record progress, block or resolve work, and record inventory parts. Stock movement and request history are persisted.
-- Responsive dashboard interface with request timelines and KPI cards.
+## Academic Project Details
 
-## Local Windows setup
+| Particular | Details |
+|---|---|
+| **Project Title** | Smart Campus Maintenance, Technician Allocation & SLA Management System |
+| **Project Name** | CampusCare |
+| **Course** | Database Management Systems (DBMS) |
+| **Programme** | Bachelor of Technology (B.Tech) |
+| **Department** | Computer Science and Engineering |
+| **Semester** | V Semester |
+| **Academic Institution** | PES University |
+| **Campus** | Electronic City Campus, Bengaluru |
+| **Academic Year** | 2026–2027 |
 
-Requirements: Node.js 20 LTS or newer and npm, MySQL Server 8.0. MongoDB Community Server is optional.
+### Project Team
 
-1. Extract the ZIP and open the extracted project folder in PowerShell.
-2. Copy .env.example to .env.local.
-3. Edit .env.local and set your MySQL username and password. Keep the database name as smart_campus_maintenance.
-4. If MongoDB is not installed, set MONGODB_ENABLED=false. Otherwise use the example URI or your MongoDB URI.
-5. Run these commands from the project folder:
+| Student Name | SRN |
+|---|---|
+| Pratham Kumar | PES2UG24CS368 |
+| Karthik P | PES2UG24CS348 |
 
-    npm install
-    npm run db:init
-    npm run dev
+### Faculty Supervisor
 
-6. Open http://localhost:3000.
+**Prof. Sheela Devi M.**  
+PES University, Department of Computer Science and Engineering.
 
-The initializer creates or updates the schema, loads repeatable demonstration data, applies views, procedures, functions, and triggers, and creates MongoDB indexes when enabled. It preserves existing records and does not drop the database.
+---
 
-## Demonstration accounts
+## 1. Project Overview
 
-| Role | Email | Password |
-|---|---|---|
-| Administrator | admin@campus.local | Admin123! |
-| Staff | staff@campus.local | Staff123! |
-| Faculty reviewer | faculty@campus.local | Faculty123! |
-| Technician | elec.tech01@campus.local | Tech123! |
+CampusCare is a web-based Smart Campus Maintenance Management System designed to digitize and streamline maintenance operations within a university campus.
 
-Students and faculty can also register in the application. The initializer restores the demo passwords listed above for seeded accounts.
+The system provides a centralized platform for reporting maintenance issues, verifying requests, allocating technicians, tracking work progress, managing inventory, and monitoring Service Level Agreements (SLAs).
 
-## Seed data
+It implements role-based workflows for students, faculty members, administrators, and technicians, ensuring transparency, accountability, and efficient coordination throughout the maintenance lifecycle.
 
-- PES Electronic City campus with three buildings and an expanded 138-room Engineering Block.
-- Six departments and 72 technicians, with skills, experience, availability, and ratings.
-- Sample assets, maintenance categories, SLA policies, inventory, vendors, and preventive maintenance schedules.
+The project demonstrates the practical application of database management concepts through relational database design, ER modelling, relational mapping, SQL queries, stored procedures, functions, triggers, and transaction management.
 
-## Database and report materials
+## 2. Key Features
 
-- database/mysql/schema.sql: normalized relational tables, constraints, and indexes.
-- database/mysql/seed.sql: repeatable campus and demo data.
-- database/mysql/advanced.sql: operational view, stored procedure, function, and audit / inventory triggers.
-- database/mysql/queries.sql: reporting and relational query examples.
-- database/mongodb/collections.js: MongoDB event collection and index setup.
-- docs/ER_DIAGRAM.md: ER diagram and relationship notes.
-- docs/RELATIONAL_SCHEMA.md: relational schema and normalization notes.
-- docs/REPORT_OUTLINE.md: report outline aligned to the implementation.
+- **Student Portal:** Submit maintenance requests, track request status, and provide feedback.
+- **Faculty Portal:** Review, approve, or reject maintenance requests.
+- **Administrator Portal:** Manage users, campus infrastructure, technicians, vendors, inventory, and maintenance assignments.
+- **Technician Portal:** View assigned work orders, update progress, record maintenance activities, and report completion.
+- **SLA Management:** Monitor maintenance response and resolution timelines.
+- **Inventory Management:** Maintain spare-part records, stock availability, and part usage.
+- **Preventive Maintenance:** Manage scheduled maintenance activities.
+- **Audit Management:** Maintain activity records for traceability and accountability.
+- **Role-Based Access Control:** Provide role-specific access to system functionalities.
 
-## Validation
+## 3. Technology Stack
 
-npm run lint and npm run build completed successfully for this source package. Database initialization could not be run in the packaging environment because no MySQL root password was configured. Enter your local MySQL credentials in .env.local, then run npm run db:init.
+| Component | Technology |
+|---|---|
+| Frontend | Next.js 14, React, TypeScript |
+| Backend | Next.js API Routes |
+| Primary Database | MySQL 8.0 |
+| Supplementary Database | MongoDB |
+| Programming Language | TypeScript, JavaScript |
+| Styling | CSS |
+| Runtime Environment | Node.js |
+| Version Control | Git and GitHub |
 
-## Expanded demonstration data
+**Database Design:** MySQL serves as the primary relational database, while MongoDB is available as an optional supplementary database for operational event records.
 
-- Demo student account: student@campus.local / Student123!.
-- 12 repeatable walkthrough requests span pending, approved, rejected, assigned, in-progress, and on-hold stages.
-- The seeded catalog contains 30 active inventory items.
+## 4. Database Implementation
 
+The database design covers 27 relational tables supporting campus infrastructure, users, departments, technicians, maintenance requests, approvals, work assignments, SLA tracking, inventory, preventive maintenance, and audit records.
+
+The implementation demonstrates:
+
+- Entity-Relationship (ER) modelling.
+- ER-to-relational mapping.
+- Primary key and foreign key constraints.
+- Data Definition Language (DDL).
+- Data Manipulation Language (DML).
+- Aggregate functions and GROUP BY queries.
+- Nested and correlated queries.
+- UPDATE and DELETE operations.
+- Stored procedures and user-defined functions.
+- Database triggers.
+- Transaction management.
+- Referential integrity.
+
+## 5. Repository Structure
+
+```text
+CampusCare/
+│
+├── app/                    # Frontend pages and API routes
+├── components/             # Reusable React components
+├── database/
+│   ├── mysql/              # Schema, seed data, queries and routines
+│   └── mongodb/            # MongoDB collection configuration
+├── docs/                   # Technical documentation and diagrams
+├── lib/                    # Database, authentication and workflow logic
+├── scripts/                # Database initialization scripts
+├── report/                 # Academic project reports
+│
+├── .env.example            # Environment configuration template
+├── .gitignore
+├── package.json
+├── package-lock.json
+├── README.md
+└── tsconfig.json
+```
+
+## 6. Local Setup and Execution
+
+### Prerequisites
+
+- Node.js 20 or later.
+- npm.
+- MySQL Server 8.0.
+- MongoDB Community Server (optional).
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/PKumar041104/CampusCare.git
+```
+
+2. Navigate to the project directory:
+
+```bash
+cd CampusCare
+```
+
+3. Install dependencies:
+
+```bash
+npm install
+```
+
+4. Create a local environment configuration file:
+
+```bash
+copy .env.example .env.local
+```
+
+5. Update the MySQL credentials and database configuration in `.env.local`.
+
+6. Initialize the database:
+
+```bash
+npm run db:init
+```
+
+7. Start the development server:
+
+```bash
+npm run dev
+```
+
+8. Open the application:
+
+```text
+http://localhost:3000
+```
+
+**Note:** MongoDB is optional. It can be disabled through the environment configuration if it is not installed.
+
+Never commit `.env.local` or actual database credentials to GitHub.
+
+## 7. Project Documentation
+
+The `docs/` directory contains technical documentation, including:
+
+- ER Diagram.
+- Relational Schema.
+- Report Outline.
+- Demonstration Runbook.
+
+The `report/` directory is reserved for academic project reports and related documentation.
+
+## 8. Project Objective
+
+The primary objective of CampusCare is to demonstrate how database-driven web applications can improve campus maintenance operations through structured data management, role-based workflows, automated database operations, and transparent service tracking.
+
+The project integrates theoretical DBMS concepts with a practical full-stack implementation.
+
+---
+
+## 9. Repository Information
+
+**GitHub Repository:**  
+https://github.com/PKumar041104/CampusCare
+
+**Project:** CampusCare – Smart Campus Maintenance Management System
+
+**Developed by:**  
+Pratham Kumar and Karthik P
+
+**Institution:** PES University, Bengaluru
+
+**Course:** Database Management Systems (DBMS)
+
+---
+
+*Academic Mini Project – B.Tech Computer Science and Engineering, V Semester, PES University.*
